@@ -30,37 +30,22 @@ class PostViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         self.overrideUserInterfaceStyle = .dark
-        let subreddit = "apple"
-        let limit = 1
-        
-        
-        guard let urlString = URL(string: "https://www.reddit.com/r/\(subreddit)/top.json?limit=\(limit)")
-        else { return }
-        
-        let urlSession = URLSession(configuration: .default)
-        
-        
-        urlSession.dataTask(with: urlString) { data,response,error in
-            guard let data = data,
-                  let postData = try? JSONDecoder().decode(Model.self, from: data)
-            else { return }
-            
+        let request = Request()
+        request.getPostData(subreddit: "apple", limit: 1, after: "t3_uiuhmz") { postData in
+
             DispatchQueue.main.async {
                 
-                // Post data
-                let calendar = Calendar.current
-                let timePassed = calendar.component(.hour, from: Date(timeIntervalSince1970: postData.data.children.first?.data.created ?? -1.0 ))
-                self.username.text = "u/\(postData.data.children.first?.data.author ?? "") · "
-                self.timePassed.text = "\(timePassed)h · "
-                self.domain.text = postData.data.children.first?.data.domain ?? ""
-                self.postTitle.text = postData.data.children.first?.data.title ?? ""
-                self.ratingButton.setTitle("\(postData.data.children.first?.data.rating ?? -1)", for: .normal)
-                self.numCommentsButton.setTitle("\(postData.data.children.first?.data.numComments ?? -1)", for: .normal)
+                self.username.text = postData.username
+                self.timePassed.text = postData.timePassed
+                self.domain.text = postData.domain
+                self.postTitle.text = postData.postTitle
+                self.ratingButton.setTitle(postData.rating, for: .normal)
+                self.numCommentsButton.setTitle(postData.comments, for: .normal)
+                
                 
                 // Image of post
-                if let imageURL = postData.data.children.first?.data.preview?.images.first?.source.url {
-                    let formattedURL = imageURL.replacingOccurrences(of: "amp;", with: "")
-                    let image = URL(string: formattedURL)
+                if let postImageURL = postData.postImageURL {
+                    let image = URL(string: postImageURL)
                     self.imageView.sd_setImage(with: image)
                 } else {
                     self.imageView.image = UIImage(named: "photo")
@@ -71,21 +56,41 @@ class PostViewController: UIViewController {
                 let bookmark = UIImage(systemName: "bookmark")
                 let bookmarkFill = UIImage(systemName: "bookmark.fill")
                 self.bookmarkButton.imageView?.image = state == 0 ? bookmark : bookmarkFill
-                
             }
             
-        }.resume()
-    }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        }
+        
     }
-    */
 
 }
+
+
+
+//guard let urlString = URL(string: "https://www.reddit.com/r/\(subreddit)/top.json?limit=\(limit)")
+//else { return }
+//
+//let urlSession = URLSession(configuration: .default)
+//
+//
+//urlSession.dataTask(with: urlString) { data,response,error in
+//    guard let data = data,
+//          let postData = try? JSONDecoder().decode(Model.self, from: data)
+//    else { return }
+//
+//    DispatchQueue.main.async {
+//
+//        // Post data
+//        let calendar = Calendar.current
+//        let timePassed = calendar.component(.hour, from: Date(timeIntervalSince1970: postData.data.children.first?.data.created ?? -1.0 ))
+//        self.username.text = "u/\(postData.data.children.first?.data.author ?? "") · "
+//        self.timePassed.text = "\(timePassed)h · "
+//        self.domain.text = postData.data.children.first?.data.domain ?? ""
+//        self.postTitle.text = postData.data.children.first?.data.title ?? ""
+//        self.ratingButton.setTitle("\(postData.data.children.first?.data.rating ?? -1)", for: .normal)
+//        self.numCommentsButton.setTitle("\(postData.data.children.first?.data.numComments ?? -1)", for: .normal)
+//
+//
+//    }
+//
+//}.resume()
