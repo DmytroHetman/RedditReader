@@ -11,20 +11,26 @@ class PostTableViewCell: UITableViewCell {
 
     // MARK: - IBOutlets
     
-    @IBOutlet private weak var postImage: UIImageView!
-    @IBOutlet private weak var username: UILabel!
-    @IBOutlet private weak var timePassed: UILabel!
-    @IBOutlet private weak var domain: UILabel!
-    @IBOutlet private weak var postTitle: UILabel!
-    @IBOutlet private weak var shareButton: UIButton!
-    @IBOutlet private weak var bookmarkButton: UIButton!
-    @IBOutlet private weak var commentsButton: UIButton!
-    @IBOutlet private weak var ratingButton: UIButton!
+    @IBOutlet private weak var postView: PostView!
     
     // MARK: Config
     
-    func config() {
+    func config(from postData: Post) {
+        self.postView.username.text = postData.username
+        self.postView.timePassed.text = postData.timePassed
+        self.postView.domain.text = postData.domain
+        self.postView.postTitle.text = postData.postTitle
+        self.postView.ratingButton.setTitle(postData.rating, for: .normal)
+        self.postView.numCommentsButton.setTitle(postData.numComments, for: .normal)
         
+        // Image of post
+        if let postImageURL = postData.postImage {
+            let image = URL(string: postImageURL)
+            let placeholder = UIImage(named: "photo")
+            self.postView.postImage.sd_setImage(with: image, placeholderImage: placeholder)
+        } else {
+            self.postView.postImage.image = UIImage(named: "photo")
+        }
     }
     
 //    override func awakeFromNib() {

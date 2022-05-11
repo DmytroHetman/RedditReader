@@ -12,6 +12,7 @@ struct Model: Codable {
 }
 
 struct ListingData: Codable {
+    let after: String
     let children: [Child]
 }
 
@@ -29,6 +30,7 @@ struct PostData: Codable {
     let author: String
     let numComments: Int
     let preview: Images?
+    let name: String
     
     enum CodingKeys: String, CodingKey {
         case created
@@ -39,6 +41,7 @@ struct PostData: Codable {
         case author
         case numComments = "num_comments"
         case preview
+        case name
     }
 }
 
