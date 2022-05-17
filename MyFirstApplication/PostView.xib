@@ -66,6 +66,9 @@
                             <buttonConfiguration key="configuration" style="plain" title="Share" imagePadding="1">
                                 <imageReference key="image" image="square.and.arrow.up" catalog="system" symbolScale="small"/>
                             </buttonConfiguration>
+                            <connections>
+                                <action selector="shareButton:" destination="-1" eventType="touchUpInside" id="OAP-Od-WUl"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gnt-4U-aWD">
                             <rect key="frame" x="158" y="270" width="98" height="30"/>
@@ -91,6 +94,9 @@
                             <buttonConfiguration key="configuration" style="plain" title="">
                                 <imageReference key="image" image="bookmark" catalog="system" symbolScale="small"/>
                             </buttonConfiguration>
+                            <connections>
+                                <action selector="saveButton:" destination="-1" eventType="touchUpInside" id="YtU-Mp-NIX"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemGray6Color"/>
@@ -135,7 +141,7 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="zR3-zr-Hod" secondAttribute="trailing" id="NjC-l8-5EO"/>
                 <constraint firstItem="zR3-zr-Hod" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="RC0-8o-Vmw"/>
             </constraints>
-            <point key="canvasLocation" x="137.68115942028987" y="134.59821428571428"/>
+            <point key="canvasLocation" x="343" y="-85"/>
         </view>
     </objects>
     <resources>

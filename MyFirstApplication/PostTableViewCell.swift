@@ -13,35 +13,37 @@ class PostTableViewCell: UITableViewCell {
     
     @IBOutlet private weak var postView: PostView!
     
+    // MARK: - Properties
+    
+    weak var delegate: PostTableViewCellDelegate? { didSet { self.postView.delegate = self.delegate } }
+    
     // MARK: Config
     
     func config(from postData: Post) {
+        self.postView.post = postData
         self.postView.username.text = postData.username
         self.postView.timePassed.text = postData.timePassed
         self.postView.domain.text = postData.domain
-        self.postView.postTitle.text = postData.postTitle
+        self.postView.postTitle.text = postData.title
         self.postView.ratingButton.setTitle(postData.rating, for: .normal)
         self.postView.numCommentsButton.setTitle(postData.numComments, for: .normal)
         
-        // Image of post
-        if let postImageURL = postData.postImage {
+        if let postImageURL = postData.image {
             let image = URL(string: postImageURL)
             let placeholder = UIImage(named: "photo")
             self.postView.postImage.sd_setImage(with: image, placeholderImage: placeholder)
         } else {
             self.postView.postImage.image = UIImage(named: "photo")
         }
-    }
+        
+        if !postData.saved {
+            self.postView.bookmarkButton.setImage(UIImage(systemName: "bookmark"), for: .normal)
+        } else {
+            self.postView.bookmarkButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+        }
     
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//        // Initialization code
-//    }
-//
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//
-//        // Configure the view for the selected state
-//    }
+    }
 
 }
+
+

@@ -8,8 +8,12 @@
 import UIKit
 
 class PostView: UIView {
+    // MARK: - Properties
     
     let kCONTENT_XIB_NAME = "PostView"
+    weak var delegate: PostTableViewCellDelegate? 
+    var post: Post?
+    
     
     // MARK: - IBOutlets
     
@@ -24,22 +28,35 @@ class PostView: UIView {
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var bookmarkButton: UIButton!
     
+    // MARK: - IBActions
+    
+    @IBAction func shareButton(_ sender: Any) {
+        guard let post = self.post else { return }
+        
+        delegate?.shouldShare(post: post)
+    }
+    
+    @IBAction func saveButton(_ sender: Any) {
+        guard let post = self.post else { return }
+        delegate?.shouldSaveUnsavePost(post: post)
+    }
+    
+    
     
     override init(frame: CGRect) {
-            super.init(frame: frame)
-            commonInit()
-        }
+        super.init(frame: frame)
+        commonInit()
+    }
         
-        required init?(coder aDecoder: NSCoder) {
-            super.init(coder: aDecoder)
-            commonInit()
-        }
-        
-        func commonInit() {
-            
-            Bundle.main.loadNibNamed(kCONTENT_XIB_NAME, owner: self, options: nil)
-            contentView.fixInView(self)
-        }
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        commonInit()
+    }
+    
+    func commonInit() {
+        Bundle.main.loadNibNamed(kCONTENT_XIB_NAME, owner: self, options: nil)
+        contentView.fixInView(self)
+    }
 }
 
 extension UIView

@@ -31,6 +31,9 @@ struct PostData: Codable {
     let numComments: Int
     let preview: Images?
     let name: String
+    let permalink: String
+    let saved: Bool
+    let id: String
     
     enum CodingKeys: String, CodingKey {
         case created
@@ -42,6 +45,9 @@ struct PostData: Codable {
         case numComments = "num_comments"
         case preview
         case name
+        case permalink
+        case saved
+        case id
     }
 }
 

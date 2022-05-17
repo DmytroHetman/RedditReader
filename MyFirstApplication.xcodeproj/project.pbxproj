@@ -13,7 +13,11 @@
 		9322350E27BC3E6D0027FA20 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9322350C27BC3E6D0027FA20 /* Main.storyboard */; };
 		9322351027BC3E6E0027FA20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9322350F27BC3E6E0027FA20 /* Assets.xcassets */; };
 		9322351327BC3E6E0027FA20 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9322351127BC3E6E0027FA20 /* LaunchScreen.storyboard */; };
+		932B0CAE282D0A46000FD1CD /* PostTableViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932B0CAD282D0A46000FD1CD /* PostTableViewCellDelegate.swift */; };
+		932B0CB0282DB49D000FD1CD /* PostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932B0CAF282DB49D000FD1CD /* PostRepository.swift */; };
+		93411F70282E8CD200BC779B /* ActiveSessionPosts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93411F6F282E8CD200BC779B /* ActiveSessionPosts.swift */; };
 		93776F4027BFF38900AF889D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93776F3F27BFF38900AF889D /* Model.swift */; };
+		9396A3FB28312E2000B8A9E0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9396A3FA28312E2000B8A9E0 /* Constants.swift */; };
 		93B89EB627C2684D00099920 /* PostDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B89EB527C2684D00099920 /* PostDetailsViewController.swift */; };
 		93B89EB827C3E97B00099920 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B89EB727C3E97B00099920 /* Request.swift */; };
 		93E1CAD52822D7D0006C7AB5 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E1CAD42822D7D0006C7AB5 /* PostTableViewCell.swift */; };
@@ -33,7 +37,11 @@
 		9322350F27BC3E6E0027FA20 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9322351227BC3E6E0027FA20 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9322351427BC3E6E0027FA20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		932B0CAD282D0A46000FD1CD /* PostTableViewCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCellDelegate.swift; sourceTree = "<group>"; };
+		932B0CAF282DB49D000FD1CD /* PostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRepository.swift; sourceTree = "<group>"; };
+		93411F6F282E8CD200BC779B /* ActiveSessionPosts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveSessionPosts.swift; sourceTree = "<group>"; };
 		93776F3F27BFF38900AF889D /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		9396A3FA28312E2000B8A9E0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		93B89EB527C2684D00099920 /* PostDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailsViewController.swift; sourceTree = "<group>"; };
 		93B89EB727C3E97B00099920 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		93E1CAD42822D7D0006C7AB5 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
@@ -79,6 +87,7 @@
 			children = (
 				9322350627BC3E6D0027FA20 /* AppDelegate.swift */,
 				9322350827BC3E6D0027FA20 /* SceneDelegate.swift */,
+				93411F6F282E8CD200BC779B /* ActiveSessionPosts.swift */,
 				9322350C27BC3E6D0027FA20 /* Main.storyboard */,
 				93E1CADC282877A9006C7AB5 /* PostView.swift */,
 				93E1CADE28296F51006C7AB5 /* PostView.xib */,
@@ -87,10 +96,13 @@
 				9322351427BC3E6E0027FA20 /* Info.plist */,
 				93776F3F27BFF38900AF889D /* Model.swift */,
 				93B89EB527C2684D00099920 /* PostDetailsViewController.swift */,
+				932B0CAF282DB49D000FD1CD /* PostRepository.swift */,
 				93B89EB727C3E97B00099920 /* Request.swift */,
 				93E1CAD8282549CE006C7AB5 /* Post.swift */,
 				93E1CAD42822D7D0006C7AB5 /* PostTableViewCell.swift */,
 				93F6D180280EE858003B7F0A /* PostListViewController.swift */,
+				932B0CAD282D0A46000FD1CD /* PostTableViewCellDelegate.swift */,
+				9396A3FA28312E2000B8A9E0 /* Constants.swift */,
 			);
 			path = MyFirstApplication;
 			sourceTree = "<group>";
@@ -229,10 +241,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				93F6D181280EE858003B7F0A /* PostListViewController.swift in Sources */,
+				932B0CB0282DB49D000FD1CD /* PostRepository.swift in Sources */,
 				93B89EB827C3E97B00099920 /* Request.swift in Sources */,
+				932B0CAE282D0A46000FD1CD /* PostTableViewCellDelegate.swift in Sources */,
 				93E1CAD52822D7D0006C7AB5 /* PostTableViewCell.swift in Sources */,
 				93776F4027BFF38900AF889D /* Model.swift in Sources */,
 				9322350727BC3E6D0027FA20 /* AppDelegate.swift in Sources */,
+				9396A3FB28312E2000B8A9E0 /* Constants.swift in Sources */,
+				93411F70282E8CD200BC779B /* ActiveSessionPosts.swift in Sources */,
 				9322350927BC3E6D0027FA20 /* SceneDelegate.swift in Sources */,
 				93B89EB627C2684D00099920 /* PostDetailsViewController.swift in Sources */,
 				93E1CAD9282549CE006C7AB5 /* Post.swift in Sources */,
