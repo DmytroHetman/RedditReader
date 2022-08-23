@@ -12,8 +12,8 @@
         <scene sceneID="trr-Nb-fsh">
             <objects>
                 <navigationController id="Brd-D6-c81" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" opaque="NO" contentMode="scaleToFill" largeTitles="YES" id="VEU-Bf-cpS">
-                        <rect key="frame" x="0.0" y="44" width="390" height="96"/>
+                    <navigationBar key="navigationBar" opaque="NO" contentMode="scaleToFill" id="VEU-Bf-cpS">
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -32,9 +32,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="EA8-Il-yHe">
-                                <rect key="frame" x="0.0" y="88" width="390" height="722"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="EA8-Il-yHe">
+                                <rect key="frame" x="0.0" y="88" width="390" height="756"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="post_table_cell" rowHeight="300" id="NVn-Cl-ZWu" userLabel="post_table_cell" customClass="PostTableViewCell" customModule="MyFirstApplication" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="300"/>
@@ -47,7 +46,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="390" height="300"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="300" id="xXn-2G-ueW"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="999" constant="300" id="xXn-2G-ueW"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -69,19 +68,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="EA8-Il-yHe" firstAttribute="leading" secondItem="gvx-Y4-rO6" secondAttribute="leading" id="2LC-nA-pae"/>
-                            <constraint firstItem="EA8-Il-yHe" firstAttribute="top" secondItem="gvx-Y4-rO6" secondAttribute="top" id="HyY-sq-xf4"/>
-                            <constraint firstItem="gvx-Y4-rO6" firstAttribute="bottom" secondItem="EA8-Il-yHe" secondAttribute="bottom" id="qV4-n5-qmV"/>
+                            <constraint firstItem="EA8-Il-yHe" firstAttribute="top" secondItem="gvx-Y4-rO6" secondAttribute="top" id="fHJ-Wl-GD5"/>
+                            <constraint firstAttribute="bottom" secondItem="EA8-Il-yHe" secondAttribute="bottom" id="qV4-n5-qmV"/>
                             <constraint firstItem="gvx-Y4-rO6" firstAttribute="trailing" secondItem="EA8-Il-yHe" secondAttribute="trailing" id="tlC-D2-aSM"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="urg-Kd-e8O">
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="urg-Kd-e8O">
                         <nil key="title"/>
-                        <textField key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Filter by title" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" id="3NB-di-rfX">
-                            <rect key="frame" x="80.666666666666686" y="5" width="229" height="34"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
-                        </textField>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="bookmark.circle" catalog="system" id="pRK-gB-uoX">
                             <connections>
                                 <action selector="savedPostsButton:" destination="UHl-Au-OZa" id="odH-mJ-ePM"/>
@@ -92,7 +85,6 @@
                         <outlet property="navigationArea" destination="urg-Kd-e8O" id="76A-5I-X9m"/>
                         <outlet property="savedPostsButton" destination="pRK-gB-uoX" id="QYq-qa-R2b"/>
                         <outlet property="tableView" destination="EA8-Il-yHe" id="lXP-6S-JlD"/>
-                        <outlet property="textField" destination="3NB-di-rfX" id="q6a-nP-KGc"/>
                         <segue destination="syf-Kz-qWA" kind="show" identifier="post_details" id="yqf-Zp-L1x"/>
                     </connections>
                 </viewController>
@@ -109,29 +101,38 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H5i-Lh-VzR" customClass="PostView" customModule="MyFirstApplication" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="140" width="390" height="300"/>
+                                <rect key="frame" x="0.0" y="88" width="390" height="300"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="GxS-NB-Yak"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ho-bI-tgD" userLabel="CommentsView">
+                                <rect key="frame" x="0.0" y="388" width="390" height="456"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hNr-Xy-xnw"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="6ho-bI-tgD" firstAttribute="top" secondItem="H5i-Lh-VzR" secondAttribute="bottom" id="249-5w-r33"/>
                             <constraint firstItem="H5i-Lh-VzR" firstAttribute="leading" secondItem="hNr-Xy-xnw" secondAttribute="leading" id="5On-pI-gwC"/>
                             <constraint firstItem="hNr-Xy-xnw" firstAttribute="trailing" secondItem="H5i-Lh-VzR" secondAttribute="trailing" id="6Go-X6-bsQ"/>
                             <constraint firstItem="H5i-Lh-VzR" firstAttribute="top" secondItem="hNr-Xy-xnw" secondAttribute="top" id="9tm-2h-ORj"/>
+                            <constraint firstItem="6ho-bI-tgD" firstAttribute="leading" secondItem="hNr-Xy-xnw" secondAttribute="leading" id="Do6-Tc-d3O"/>
+                            <constraint firstAttribute="bottom" secondItem="6ho-bI-tgD" secondAttribute="bottom" id="EcM-uB-apV"/>
+                            <constraint firstItem="hNr-Xy-xnw" firstAttribute="trailing" secondItem="6ho-bI-tgD" secondAttribute="trailing" id="PGk-ij-yp3"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="FUR-wq-GhD"/>
                     <connections>
+                        <outlet property="commentsView" destination="6ho-bI-tgD" id="uO7-XV-9GZ"/>
                         <outlet property="postView" destination="H5i-Lh-VzR" id="OMt-L9-CGB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kyH-pk-WvH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="975" y="94"/>
+            <point key="canvasLocation" x="1115" y="94"/>
         </scene>
     </scenes>
     <resources>

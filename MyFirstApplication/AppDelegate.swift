@@ -14,8 +14,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         PostRepository.shared.readFile()
-        Request.shared.fetchData(subreddit: Constants.subreddit, limit: Constants.limit, after: "") {
-            postsData in
+        Request.shared.fetchData(
+            subreddit: Const.subreddit,
+            limit: Const.limit,
+            after: ""
+        ) { postsData in
             ActiveSessionPosts.shared.posts = postsData
         }
         return true
